@@ -16,7 +16,7 @@
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_scroll__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/scroll */ \"./src/modules/scroll.js\");\n\r\n\r\nseamless.polyfill();\r\n(0,_modules_scroll__WEBPACK_IMPORTED_MODULE_0__[\"default\"])()\n\n//# sourceURL=webpack://3dglo/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_scroll__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/scroll */ \"./src/modules/scroll.js\");\n/* harmony import */ var _modules_tabs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/tabs */ \"./src/modules/tabs.js\");\n\r\n\r\n\r\nseamless.polyfill();\r\n(0,_modules_scroll__WEBPACK_IMPORTED_MODULE_0__[\"default\"])()\r\n;(0,_modules_tabs__WEBPACK_IMPORTED_MODULE_1__[\"default\"])()\n\n//# sourceURL=webpack://3dglo/./src/index.js?");
 
 /***/ }),
 
@@ -27,6 +27,16 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _mod
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst scroll = () => {\r\n    const body = document.querySelector('body')\r\n\r\n    const goToScroll = (link) => {\r\n        const id = link.getAttribute('href').substring(1)\r\n        const section = document.getElementById(id)\r\n        if (section) {\r\n            seamless.elementScrollIntoView(section, {\r\n                behavior: 'smooth',\r\n                block: 'start'\r\n            })\r\n        } else {\r\n            seamless.elementScrollIntoView(document.querySelector(\"#characteristics\"), {\r\n                behavior: \"smooth\",\r\n                block: \"center\",\r\n                inline: \"center\",\r\n            });\r\n        }\r\n    }\r\n    \r\n    body.addEventListener('click', (e) => {\r\n        e.preventDefault()\r\n        let link = e.target\r\n        if (e.target.closest('.header-menu__item') || e.target.closest('.card-details__link-characteristics')) { \r\n            goToScroll(link)\r\n        }\r\n    })\r\n\r\n}\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (scroll);\n\n//# sourceURL=webpack://3dglo/./src/modules/scroll.js?");
+
+/***/ }),
+
+/***/ "./src/modules/tabs.js":
+/*!*****************************!*\
+  !*** ./src/modules/tabs.js ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst tabs = () => {\r\n    const tabs = document.querySelectorAll('.card-detail__change')\r\n    const tabTitle = document.querySelector('.card-details__title')\r\n    const tabImg = document.querySelector('.card__image_item')\r\n    const price = document.querySelector('.card-details__price')\r\n    const title = document.querySelector('title')\r\n\r\n\r\n    const tabsOptions = [\r\n        {\r\n            name: \"Graphite\",\r\n            memory: \"128\",\r\n            price: \"60000\",\r\n            img: \"img/iPhone-graphite.webp\"\r\n        },\r\n        {\r\n            name: \"Silver\",\r\n            memory: \"256\",\r\n            price: \"65000\",\r\n            img: \"img/iPhone-silver.webp\"\r\n        },\r\n        {\r\n            name: \"Sierra Blue\",\r\n            memory: \"512\",\r\n            price: \"70000\",\r\n            img: \"img/iPhone-sierra_blue.webp\"\r\n        }\r\n    ]\r\n\r\n    const changeContent = (index) => {\r\n        tabTitle.textContent = `Смартфон Apple iPhone 13 Pro ${tabsOptions[index].memory}GB ${tabsOptions[index].name}`\r\n        price.textContent = `${tabsOptions[index].price}₽`\r\n        title.textContent = `iPhone 13 Pro ${tabsOptions[index].memory}GB ${tabsOptions[index].name}`\r\n \r\n        tabImg.setAttribute('src', ` ${tabsOptions[index].img}`)\r\n    }\r\n\r\n    const chacngeActive = (indexClickedTab) => {\r\n        tabs.forEach((tab, index) => {\r\n            tab.classList.remove('active')\r\n\r\n            if (index === indexClickedTab) {\r\n                tab.classList.add('active')\r\n            }\r\n        })\r\n        changeContent(indexClickedTab)\r\n    }\r\n\r\n    tabs.forEach((tab, index) => {\r\n        tab.addEventListener('click', () => {\r\n            chacngeActive(index)\r\n        })\r\n    })\r\n\r\n    changeContent(0)\r\n}\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (tabs);\n\n//# sourceURL=webpack://3dglo/./src/modules/tabs.js?");
 
 /***/ })
 
