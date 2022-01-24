@@ -19,9 +19,10 @@ const scroll = () => {
     }
     
     body.addEventListener('click', (e) => {
-        e.preventDefault()
+        
         let link = e.target
         if (e.target.closest('.header-menu__item') || e.target.closest('.card-details__link-characteristics')) { 
+            e.preventDefault()
             goToScroll(link)
         }
     })

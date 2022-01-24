@@ -1,5 +1,6 @@
 const getData = () => {
     const list = document.querySelector('.cross-sell__list')
+    const btn = document.querySelector('.cross-sell__add')
 
     let stack = 4
     let count = 1
@@ -33,7 +34,7 @@ const getData = () => {
         if (data.length > newStack) {
             count++
         } else {
-            //убрать кнопку
+            btn.style.display = "none"
         }
     }
 
@@ -53,6 +54,8 @@ const getData = () => {
             console.error(error.message);
         })
     }
+
+    btn.addEventListener('click', getGoods)
     getGoods()
 }
 
